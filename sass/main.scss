@@ -1,0 +1,57 @@
+main {
+  transition: all .5s ease-in-out;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(10, 64px);
+  grid-template-rows: repeat(10, 64px);
+  border-bottom: 1px solid #bcbcbc;
+  border-right: 1px solid #bcbcbc;
+  width: 640px;
+  margin: 0 auto;
+
+  & > div {
+    border-top: 1px solid #bcbcbc;
+    border-left: 1px solid #bcbcbc;
+  }
+
+  .furry, .coin {
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-position: center;
+  }
+
+  .furry {
+    background-image: url('../images/monster.svg');
+  }
+
+  .coin {
+    background-image: url('../images/bitcoin.svg');
+  }
+}
+
+.game-over {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  padding: 10px;
+  background-color: rgba(243, 190, 77, .75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &.hide {
+    display: none;
+  }
+
+  &:not(.hide) {
+    & ~ main {
+      filter: blur(5px);
+    }
+  }
+}
